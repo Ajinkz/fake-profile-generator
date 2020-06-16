@@ -117,8 +117,9 @@ Finally, zip all three lists and create a new dataframe
 profile = pd.DataFrame(zip(name_list, age_list, biolist), columns=['name','age','bios'])
 ```
 
-In this format we will be getting our data 
-![Bios in string](/images/6_df.JPG)
+In this format we will be getting our data
+
+> ![Bios in string](/images/6_df.JPG)
 
 
 Now we can serialise datframe object using `pickle` for future use
