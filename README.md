@@ -133,7 +133,7 @@ with open("bios_data.pkl", "wb") as fp:
 
 ### References
 - [selenium](https://selenium-python.readthedocs.io/getting-started.html)
-- [BeautifulSoup]https://www.crummy.com/software/BeautifulSoup/bs4/doc/#quick-start
+- [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/#quick-start)
 
 
 ### Acknowledgement
