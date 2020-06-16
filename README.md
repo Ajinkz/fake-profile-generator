@@ -1,5 +1,4 @@
-![Banner](/images/banner.jpg)
-### Fake profile generator
+![Fake profile generator](/images/banner.jpg)
 
 ### Objective
 To create these fake bios, we'll need to rely on 3rd party website which will help us in generating fake bios for us. There are numerous websites out there which will generate fake profiles for us. This is a feasible way to write thousands of fake bios in a very reasonable amount of time.
