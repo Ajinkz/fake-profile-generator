@@ -4,7 +4,7 @@
 ### Objective
 There is no feasible way to write thousands of fake bios in a very reasonable amount of time. To writes these fake bios, we'll need to rely on 3rd party website which will help us in generating fake bios for us. There are numerous websites out there which will generate fake profiles for us.
 
-!(List of a few sites)[https://www.google.com/search?q=fake+bio+generator&oq=fake+bio&aqs=chrome.1.69i57j69i59j0l4j69i60l2.2641j1j7&sourceid=chrome&ie=UTF-8]
+!(sites)[https://www.google.com/search?q=fake+bio+generator&oq=fake+bio&aqs=chrome.1.69i57j69i59j0l4j69i60l2.2641j1j7&sourceid=chrome&ie=UTF-8]
 
 
 ### Required libraries
