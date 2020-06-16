@@ -4,12 +4,10 @@
 ### Objective
 There is no feasible way to write thousands of fake bios in a very reasonable amount of time. To writes these fake bios, we'll need to rely on 3rd party website which will help us in generating fake bios for us. There are numerous websites out there which will generate fake profiles for us.
 
-[List of sites](https://www.google.com/search?q=fake+bio+generator&oq=fake+bio&aqs=chrome.1.69i57j69i59j0l4j69i60l2.2641j1j7&sourceid=chrome&ie=UTF-8)
-
-
 ### Required libraries
 - `requests` allows us to access the webpage that we need to scrape
 - `time` will be needed in order to wait between webpage refreshes
+- `re` for regex
 - `tqdm` is only needed as a loading bar for our sake (optional)
 - `bs4` is needed in order to use BeautifulSoup
 - `selenium` to stimulate click events
@@ -18,7 +16,6 @@ There is no feasible way to write thousands of fake bios in a very reasonable am
 
 ### Code
 Importing required libraries
-
 ```python
 import re
 import time
@@ -35,8 +32,8 @@ from selenium.webdriver.common.keys import Keys
 URL of website for scraping
 ```URL = "https://www.character-generator.org.uk/bio/"```
 
+Initialise with empty list
 ```python
-# Initialise with empty list
 biolist = []
 name_list = []
 age_list = []
@@ -59,7 +56,6 @@ time.sleep(2)
 ```
 ![Selenium Automation](/images/0_automate.gif)
 
-
 In my case url was changing after bios generation, so we need to get the updated url for further work
 ```python
 # get new url
@@ -69,19 +65,22 @@ url = driver.current_url
 page = requests.get(url)
 ```
 Using request we get the contents of webpage in bytes format
-![Selenium Automation](/images/1_page.JPG)
+![Page contents](/images/1_page.JPG)
+
 ```python
 soup = bs(page.content)
 ```
+
 USing Beautifulsoup, we parse content of webpage and get data into html format
-![Selenium Automation](/images/2_soup.JPG)
+![Parsed content](/images/2_soup.JPG)
 
 Then using `find` method we try to find particular element from html page e.g. `div` tag, its `class` name, `<p>` i.e. paragraph tag from html where our actual text strings are present. We can easily find these tags of any website by right click on that webpage and in option select `Inspect`.
+
 ```python
 # Getting the bios
 bios = soup.find('div', class_='bio').find_all('p')
 ```
-![Selenium Automation](/images/3_para.JPG)
+![Bios paragragh](/images/3_para.JPG)
 
 using regular expresion we removed `<p>,</p>` tags from our data and converted it into python string
 ```python
@@ -89,7 +88,7 @@ biostr=''
 for i in bios:
     biostr += re.sub('<p>|</p>','',str(i))
 ```
-![Selenium Automation](/images/4_str.JPG)
+![Bios in string](/images/4_str.JPG)
 
 This step could be optional step, uptil now we are able to collect whole bios containing all required information for any profile
 Since we had a fix format of data, it was easy to capture from raw data
@@ -100,16 +99,17 @@ In similar way, we could capture a lot of information using regex
 # To collect name, age from first string
 name, age = ' '.join(biostr.split('.')[0].split(' ')[0:3]), int(re.findall("\d+", biostr.split('.')[0])[0])
 ```
-![Selenium Automation](/images/5_name.JPG)
+![Getting name,age](/images/5_name.JPG)
 
-After every loop will puh new data into respective list
+After every loop will push new data into respective list
 ```
 biolist.append(biostr)
 name_list.append(name)
 age_list.append(age)
+```
 
 This is must step to close the window of browser after finishing scraping task
-# close the instance
+```
 driver.close()
 ```
 
@@ -125,8 +125,16 @@ In this format we will be getting our data
 | 1 | Mark Rick Sweet | 29    | Mark Rick Sweet is a 29-year-oldtheatre actor... 
 
 
-Now we can serialise created datframe object using `pickle` for future use
+Now we can serialise datframe object using `pickle` for future use
 ```python
 with open("bios_data.pkl", "wb") as fp:
     pickle.dump(profile, fp)
 ```
+
+### References
+- [selenium](https://selenium-python.readthedocs.io/getting-started.html)
+- [BeautifulSoup]https://www.crummy.com/software/BeautifulSoup/bs4/doc/#quick-start
+
+### Acknowledgement
+[Marco Santos](https://github.com/marcosan93)
+
