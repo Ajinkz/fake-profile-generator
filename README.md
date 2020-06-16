@@ -118,10 +118,7 @@ profile = pd.DataFrame(zip(name_list, age_list, biolist), columns=['name','age',
 ```
 
 In this format we will be getting our data 
-| idx | name | age | bios |
-|-|-|-|-|
-| 0 | Richard Luke Trescothik | 21 | Richard Luke Trescothik is a 21-year-old trade... |
-| 1 | Mark Rick Sweet | 29    | Mark Rick Sweet is a 29-year-oldtheatre actor... 
+![Bios in string](/images/6_df.JPG)
 
 
 Now we can serialise datframe object using `pickle` for future use
