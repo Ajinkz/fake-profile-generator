@@ -32,8 +32,8 @@ from selenium.webdriver.common.keys import Keys
 URL of website for scraping
 ```URL = "https://www.character-generator.org.uk/bio/"```
 
-Initialise with empty list
 ```python
+# Initialise with empty list
 biolist = []
 name_list = []
 age_list = []
@@ -61,7 +61,7 @@ In my case url was changing after bios generation, so we need to get the updated
 # get new url
 url = driver.current_url
 
-#get conents from url
+#get contents from url
 page = requests.get(url)
 ```
 Using request we get the contents of webpage in bytes format
@@ -135,6 +135,7 @@ with open("bios_data.pkl", "wb") as fp:
 - [selenium](https://selenium-python.readthedocs.io/getting-started.html)
 - [BeautifulSoup]https://www.crummy.com/software/BeautifulSoup/bs4/doc/#quick-start
 
+
 ### Acknowledgement
-[Marco Santos](https://github.com/marcosan93)
+- [Marco Santos](https://github.com/marcosan93)
 
